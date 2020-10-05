@@ -8,29 +8,23 @@ class Elements {
     this.messageDisplay = document.querySelector("#displayMessage");
     // select message border
     this.messageBorder = document.querySelector("#modalBorder");
-
     // select the lists
     this.typeTestList = document.querySelector("#typeTestList");
     this.lineList = document.querySelector("#lineList");
-    // select headings
-    // this.typeTesttHeading = document.querySelector("#typeTestHeading");
+    // select heading
     this.editHeading = document.querySelector("#editHeading");
     //select Areas
     this.headArea = document.querySelector("#headArea");
     this.testArea = document.querySelector("#testArea");
     this.editArea = document.querySelector("#editArea");
-
     // select add show forms + / icon
     this.addShowFormTypeTest = document.querySelector("#typeTestAddBtnIcon");
     this.addShowFormLineEdit = document.querySelector("#lineEdit");
-
     // Buttons
     this.typeTestAddBtn = document.querySelector("#typeTestAddBtn");
     this.typeTestCancelBtn = document.querySelector("#typeTestCancelBtn");
     this.addLineAddBtn = document.querySelector("#addLineAddBtn");
     this.exitEditBtn = document.querySelector("#exitEditBtn");
-    // this.lineCanelBtn = document.querySelector("#lineCanelBtn");
-
     //Form
     this.typeTestForm = document.querySelector("#typeTestForm");
     this.lineForm = document.querySelector("#lineForm");

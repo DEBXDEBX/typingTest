@@ -29,6 +29,7 @@ class Display {
   writeLineNumber(text) {
     this.elements.lineNumberElement.textContent = text;
   }
+
   displayTestArea() {
     this.displayNone(this.elements.typeTestForm);
     this.displayNone(this.elements.testArea);

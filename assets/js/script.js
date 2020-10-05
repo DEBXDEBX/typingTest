@@ -5,7 +5,7 @@ let currentLine = "David is great.";
 let currentArray = [];
 let currentArrayIndex = 0;
 let testIndex = -243;
-let skipTest = false;
+const skipValue = "skipTheTest12481632641282565161032";
 // Create elements object
 const el = new Elements();
 // Pass elements to display
@@ -37,7 +37,8 @@ function startUp() {
 
 // addEventListeners #############################################################
 document.addEventListener("keyup", (e) => {
-  if (skipTest) {
+  //skip the test if true
+  if (el.lineInputElement.value === skipValue) {
     return;
   }
   const lineInputValue = el.lineInputElement.value;
@@ -155,6 +156,7 @@ el.lineList.addEventListener("click", (e) => {
 
 // When you click on the add test icon +
 el.addShowFormTypeTest.addEventListener("click", (e) => {
+  setSkipTestValue();
   clickAudio.play();
   display.showAddTestForm();
   textTypeTest.focus();
@@ -162,13 +164,13 @@ el.addShowFormTypeTest.addEventListener("click", (e) => {
 
 // When you click on the edit icon +
 el.addShowFormLineEdit.addEventListener("click", (e) => {
-  skipTest = true;
-  el.lineInputElement.value = "";
+  setSkipTestValue();
+  // el.lineInputElement.value = "";
   clickAudio.play();
   display.paintEditList(currentArray);
   display.showEditSection();
   textNewLine.focus();
-}); //End
+}); //Endg
 
 el.typeTestAddBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -192,16 +194,12 @@ el.typeTestAddBtn.addEventListener("click", (e) => {
   el.typeTestForm.reset();
   display.showAlert("A new typing test was added", "success", 1500);
   renderTests();
-  setTimeout(function () {
-    skipTest = false;
-  }, 10000);
 }); //End
 
 el.typeTestCancelBtn.addEventListener("click", (e) => {
   clickAudio.play();
   this.textTypeTest.value = "";
   renderTests();
-  skipTest = false;
 }); //End
 
 el.addLineAddBtn.addEventListener("click", (e) => {
@@ -232,7 +230,6 @@ el.addLineAddBtn.addEventListener("click", (e) => {
 }); //End
 
 el.exitEditBtn.addEventListener("click", (e) => {
-  skipTest = false;
   this.textNewLine.value = "";
   loadTestData();
   clickAudio.play();
@@ -312,6 +309,7 @@ function sortArrayByName(array) {
     return 0;
   }); //End sort function
 } // End sortArrayByName(array)
+
 const getNewLine = () => {
   // Function to set new line and clear input
   if (currentArrayIndex === currentArray.length - 1) {
@@ -333,7 +331,12 @@ const getNewLine = () => {
     el.lineInputElement.value = "";
   }
 }; //End getNewLine()
+
 // Paint tests
 const renderTests = () => {
   display.paintTypeTests(mapNamesOut(arrayOfTypeTests));
+};
+
+const setSkipTestValue = () => {
+  el.lineInputElement.value = skipValue;
 };
