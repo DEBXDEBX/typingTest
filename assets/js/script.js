@@ -5,7 +5,7 @@ let currentLine = "David is great.";
 let currentArray = [];
 let currentArrayIndex = 0;
 let testIndex = -243;
-let editMode = false;
+let skipTest = false;
 // Create elements object
 const el = new Elements();
 // Pass elements to display
@@ -38,7 +38,7 @@ function startUp() {
 
 // addEventListeners #############################################################
 document.addEventListener("keyup", (e) => {
-  if (editMode) {
+  if (skipTest) {
     return;
   }
   const lineInputValue = el.lineInputElement.value;
@@ -164,7 +164,7 @@ el.addShowFormTypeTest.addEventListener("click", (e) => {
 
 // When you click on the edit icon +
 el.addShowFormLineEdit.addEventListener("click", (e) => {
-  editMode = true;
+  skipTest = true;
   el.lineInputElement.value = "";
   clickAudio.play();
   display.paintEditList(currentArray);
@@ -194,12 +194,16 @@ el.typeTestAddBtn.addEventListener("click", (e) => {
   el.typeTestForm.reset();
   display.showAlert("A new typing test was added", "success", 1500);
   renderTests();
+  setTimeout(function () {
+    skipTest = false;
+  }, 10000);
 }); //End
 
 el.typeTestCancelBtn.addEventListener("click", (e) => {
   clickAudio.play();
   this.textTypeTest.value = "";
   renderTests();
+  skipTest = false;
 }); //End
 
 el.addLineAddBtn.addEventListener("click", (e) => {
@@ -217,8 +221,7 @@ el.addLineAddBtn.addEventListener("click", (e) => {
 
   arrayOfTypeTests[testIndex].arrayOfStrings.push(newLine);
 
-  tabAudio.play();
-
+  addTestAudio.play();
   // save
   saveAllTests();
   el.lineForm.reset();
@@ -231,9 +234,10 @@ el.addLineAddBtn.addEventListener("click", (e) => {
 }); //End
 
 el.exitEditBtn.addEventListener("click", (e) => {
-  editMode = false;
+  skipTest = false;
   this.textNewLine.value = "";
   loadTestData();
+  clickAudio.play();
   display.hideEditSection();
 }); //End
 
