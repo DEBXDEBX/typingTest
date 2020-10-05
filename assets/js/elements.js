@@ -3,6 +3,7 @@ class Elements {
     // Interactive elements
     this.lineOutputElement = document.querySelector("#lineOutput");
     this.lineInputElement = document.querySelector("#lineInput");
+    this.lineNumberElement = document.querySelector("#lineNumber");
     // select message display
     this.messageDisplay = document.querySelector("#displayMessage");
     // select message border

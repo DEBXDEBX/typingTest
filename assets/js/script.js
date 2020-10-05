@@ -5,6 +5,7 @@ let currentLine = "David is great.";
 let currentArray = [];
 let currentArrayIndex = 0;
 let testIndex = -243;
+let editMode = false;
 // Create elements object
 const el = new Elements();
 // Pass elements to display
@@ -37,6 +38,9 @@ function startUp() {
 
 // addEventListeners #############################################################
 document.addEventListener("keyup", (e) => {
+  if (editMode) {
+    return;
+  }
   const lineInputValue = el.lineInputElement.value;
   const key = e.key;
 
@@ -160,6 +164,8 @@ el.addShowFormTypeTest.addEventListener("click", (e) => {
 
 // When you click on the edit icon +
 el.addShowFormLineEdit.addEventListener("click", (e) => {
+  editMode = true;
+  el.lineInputElement.value = "";
   clickAudio.play();
   display.paintEditList(currentArray);
   display.showEditSection();
@@ -225,6 +231,7 @@ el.addLineAddBtn.addEventListener("click", (e) => {
 }); //End
 
 el.exitEditBtn.addEventListener("click", (e) => {
+  editMode = false;
   this.textNewLine.value = "";
   loadTestData();
   display.hideEditSection();
@@ -239,7 +246,11 @@ const loadTestData = () => {
   currentArray = arrayOfTypeTests[testIndex].arrayOfStrings;
   currentArrayIndex = 0;
   currentLine = currentArray[currentArrayIndex];
-  el.lineOutputElement.textContent = currentLine;
+  // el.lineOutputElement.textContent = currentLine;
+  display.writeLine(currentLine);
+  display.writeLineNumber(
+    `Line ${currentArrayIndex + 1} of ${currentArray.length}`
+  );
 }; //End loadTestData()
 const getDefaultData = () => {
   let array = [];
@@ -256,14 +267,19 @@ const getDefaultData = () => {
     "Baby, don't treat me bad",
   ];
   const defaultArrayTwo = [
-    "vvv bbb",
-    "bbb aaa",
-    "ccc sss",
-    "jfjf urur",
-    "ghgh vnvn",
+    "git init",
+    "git status",
+    "git add .",
+    "git commit -m 'first commit'",
+    "git log",
+    "git branch -d newTestBranch",
+    "git checkout newTestBranch",
+    "git checkout master",
+    "git merge newTestBranch",
+    "git --version",
   ];
   const nameOne = "Don't treat me bad";
-  const nameTwo = "vvv bbb";
+  const nameTwo = "git";
   let defaultOne = new TypeTest(nameOne, defaultArrayOne);
   let defaultTwo = new TypeTest(nameTwo, defaultArrayTwo);
 
@@ -300,13 +316,21 @@ const getNewLine = () => {
   if (currentArrayIndex === currentArray.length - 1) {
     currentArrayIndex = 0;
     currentLine = currentArray[currentArrayIndex];
-    el.lineOutputElement.textContent = currentLine;
+    // el.lineOutputElement.textContent = currentLine;
+    display.writeLine(currentLine);
+    display.writeLineNumber(
+      `Line ${currentArrayIndex + 1} of ${currentArray.length}`
+    );
     el.lineInputElement.value = "";
     display.showAlert("Great Job! Restarting test.", "success", 2000);
   } else {
     currentArrayIndex++;
     currentLine = currentArray[currentArrayIndex];
-    el.lineOutputElement.textContent = currentLine;
+    // el.lineOutputElement.textContent = currentLine;
+    display.writeLine(currentLine);
+    display.writeLineNumber(
+      `Line ${currentArrayIndex + 1} of ${currentArray.length}`
+    );
     el.lineInputElement.value = "";
   }
 }; //End getNewLine()

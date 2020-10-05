@@ -23,6 +23,12 @@ class Display {
   clearEditList() {
     this.elements.lineList.innerHTML = "";
   }
+  writeLine(text) {
+    this.elements.lineOutputElement.textContent = text;
+  }
+  writeLineNumber(text) {
+    this.elements.lineNumberElement.textContent = text;
+  }
   displayTestArea() {
     this.displayNone(this.elements.typeTestForm);
     this.displayNone(this.elements.testArea);
