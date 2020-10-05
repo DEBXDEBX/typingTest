@@ -27,7 +27,6 @@ window.onload = function () {
 
 //Start Up
 function startUp() {
-  // loadFakeData();
   arrayOfTypeTests = typeTestStorage.getArrayFromLS();
   //check for empty array
   if (arrayOfTypeTests.length === 0) {
@@ -133,8 +132,7 @@ el.lineList.addEventListener("click", (e) => {
     if (isNaN(index)) {
       return;
     }
-    // testIndex = index;
-    // arrayOfTabs.splice(testIndex, 1);
+
     arrayOfTypeTests[testIndex].arrayOfStrings.splice(index, 1);
     // arrayOfTypeTests.splice(testIndex, 1);
     deleteAudio.play();
@@ -250,7 +248,6 @@ const loadTestData = () => {
   currentArray = arrayOfTypeTests[testIndex].arrayOfStrings;
   currentArrayIndex = 0;
   currentLine = currentArray[currentArrayIndex];
-  // el.lineOutputElement.textContent = currentLine;
   display.writeLine(currentLine);
   display.writeLineNumber(
     `Line ${currentArrayIndex + 1} of ${currentArray.length}`
@@ -320,7 +317,6 @@ const getNewLine = () => {
   if (currentArrayIndex === currentArray.length - 1) {
     currentArrayIndex = 0;
     currentLine = currentArray[currentArrayIndex];
-    // el.lineOutputElement.textContent = currentLine;
     display.writeLine(currentLine);
     display.writeLineNumber(
       `Line ${currentArrayIndex + 1} of ${currentArray.length}`
@@ -330,7 +326,6 @@ const getNewLine = () => {
   } else {
     currentArrayIndex++;
     currentLine = currentArray[currentArrayIndex];
-    // el.lineOutputElement.textContent = currentLine;
     display.writeLine(currentLine);
     display.writeLineNumber(
       `Line ${currentArrayIndex + 1} of ${currentArray.length}`
