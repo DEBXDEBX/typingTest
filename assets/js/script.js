@@ -270,7 +270,7 @@ const getDefaultData = () => {
     "git init",
     "git status",
     "git add .",
-    "git commit -m 'first commit'",
+    'git commit -m "first commit"',
     "git log",
     "git branch -d newTestBranch",
     "git checkout newTestBranch",
