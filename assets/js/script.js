@@ -1,11 +1,12 @@
 "use strict";
 const TYPE_TEST_STORAGE_KEY = "typeTest9292020DEBX";
+const skipValue = "skipTheTest12481632641282565161032";
 let arrayOfTypeTests;
 let currentLine = "David is great.";
 let currentArray = [];
 let currentArrayIndex = 0;
 let testIndex = -243;
-const skipValue = "skipTheTest12481632641282565161032";
+
 // Create elements object
 const el = new Elements();
 // Pass elements to display
@@ -251,18 +252,19 @@ const loadTestData = () => {
   );
 }; //End loadTestData()
 const getDefaultData = () => {
+  display.showAlert("Loading default data.", "success", 2000);
   let array = [];
   const defaultArrayOne = [
-    "I never thought you'd hurt me",
-    "I guess you live and learn",
-    "That when you're playin' with fire you're bound to get burned",
-    "I've been mistreated, I've been used before",
-    "I get kicked in the face still I come back for more",
-    "But I won't cry no more 'cause the tears are all in vain",
-    "We can pick up the pieces and start it all again",
-    "Let's just get back to the way it was before",
-    "Oh, girl I can't take anymore",
-    "Baby, don't treat me bad",
+    "I never thought you'd hurt me.",
+    "I guess you live and learn.",
+    "That when you're playin' with fire you're bound to get burned.",
+    "I've been mistreated, I've been used before.",
+    "I get kicked in the face still I come back for more.",
+    "But I won't cry no more 'cause the tears are all in vain.",
+    "We can pick up the pieces and start it all again.",
+    "Let's just get back to the way it was before.",
+    "Oh, girl I can't take anymore.",
+    "Baby, don't treat me bad.",
   ];
   const defaultArrayTwo = [
     "git init",
