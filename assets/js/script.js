@@ -276,10 +276,12 @@ const getDefaultData = () => {
     "git add .",
     'git commit -m "first commit"',
     "git log",
-    "git branch -d newTestBranch",
+    "git branch newTestBranch",
     "git checkout newTestBranch",
+    'git commit -m "new branch commit"',
     "git checkout master",
     "git merge newTestBranch",
+    "git branch -d newTestBranch",
     "git --version",
   ];
   const nameOne = "Don't treat me bad";
