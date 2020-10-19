@@ -76,6 +76,7 @@ i:hover {
 .active {
   color: white;
   box-shadow: 5px 4px 9px black;
+  transform: scale(1.1);
 }
 #typeTestList {
   display: flex;
@@ -98,6 +99,8 @@ nav ul li {
   border-radius: 10px 10px 0px 0px;
   font-weight: 700;
   font-size: 1.2rem;
+  transition: color 0.3s, box-shadow 0.7s, transform 0.7s;
+  transition-timing-function: cubic-bezier(0.45, 1.87, 0.62, 1.6);
 }
 nav ul li.typeTest:hover {
   color: rgb(255, 255, 255);
