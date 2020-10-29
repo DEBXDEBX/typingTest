@@ -21,6 +21,8 @@ const deleteAudio = document.querySelector("#deleteAudio");
 const wrongAudio = document.querySelector("#wrongAudio");
 const addTestAudio = document.querySelector("#addTestAudio");
 const clickAudio = document.querySelector("#clickAudio");
+const restartAudio = document.querySelector("#restartAudio");
+
 //This enables JQuery ToolTips
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
@@ -328,6 +330,7 @@ const getNewLine = () => {
       `Line ${currentArrayIndex + 1} of ${currentArray.length}`
     );
     el.lineInputElement.value = "";
+    restartAudio.play();
     display.showAlert("Great Job! Restarting test.", "success", 2000);
   } else {
     currentArrayIndex++;
