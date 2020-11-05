@@ -38,6 +38,7 @@ function startUp() {
   //check for empty array
   if (arrayOfTypeTests.length === 0) {
     arrayOfTypeTests = getDefaultData();
+    saveAllTests();
   }
   renderTests();
 }
@@ -102,18 +103,20 @@ el.typeTestList.addEventListener("click", (e) => {
 
   // event delegation
   if (e.target.classList.contains("typeTest")) {
-    let tabList = document.getElementsByClassName("typeTest");
-    // create an array from an array like object
-    let newArray = Array.from(tabList);
-    newArray.forEach((item) => {
-      item.classList.remove("active");
-    });
+    const element = document.querySelector(".typeTest.active");
+    if (element) {
+      element.classList.remove("active");
+    }
+
     // add active class
     e.target.classList.add("active");
 
     // get the index from the html
     let index = e.target.dataset.index;
     index = parseInt(index);
+    if (isNaN(index)) {
+      return;
+    }
     testIndex = index;
     tabAudio.play();
 
@@ -142,7 +145,6 @@ el.lineList.addEventListener("click", (e) => {
     }
 
     arrayOfTypeTests[testIndex].arrayOfStrings.splice(index, 1);
-    // arrayOfTypeTests.splice(testIndex, 1);
     deleteAudio.play();
     display.showAlert("A line was deleted", "success", 1500);
     // save
@@ -189,7 +191,7 @@ el.typeTestAddBtn.addEventListener("click", (e) => {
     return;
   }
 
-  let newTest = new TypeTest(testName);
+  const newTest = new TypeTest(testName);
   newTest.arrayOfStrings.push(newTest.name);
   arrayOfTypeTests.push(newTest);
 
@@ -259,7 +261,7 @@ const loadTestData = () => {
 }; //End loadTestData()
 const getDefaultData = () => {
   display.showAlert("Loading default data.", "success", 2000);
-  let array = [];
+  const array = [];
   const defaultArrayOne = [
     "I never thought you'd hurt me.",
     "I guess you live and learn.",
@@ -288,8 +290,8 @@ const getDefaultData = () => {
   ];
   const nameOne = "Don't treat me bad";
   const nameTwo = "git";
-  let defaultOne = new TypeTest(nameOne, defaultArrayOne);
-  let defaultTwo = new TypeTest(nameTwo, defaultArrayTwo);
+  const defaultOne = new TypeTest(nameOne, defaultArrayOne);
+  const defaultTwo = new TypeTest(nameTwo, defaultArrayTwo);
 
   array.push(defaultOne);
   array.push(defaultTwo);
@@ -298,17 +300,15 @@ const getDefaultData = () => {
 
 // create a new array with only the items name
 function mapNamesOut(array) {
-  let mapedArray = array.map((item) => {
-    return item.name;
-  });
+  const mapedArray = array.map((item) => item.name);
   return mapedArray;
 } // End mapNamesOut(array)
 
 // Sort an array by it's name
 function sortArrayByName(array) {
   array.sort(function (a, b) {
-    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
     if (nameA < nameB) {
       return -1;
     }
