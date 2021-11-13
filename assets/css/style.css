@@ -64,7 +64,9 @@ i:hover {
 #lineOutput {
   text-align: center;
 }
-
+#lineInput {
+  font-size: 44px;
+}
 .typeTest:hover {
   cursor: pointer;
 }
