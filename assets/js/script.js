@@ -70,8 +70,11 @@ document.addEventListener("keyup", (e) => {
   const editedText = currentLine.slice(0, length);
   if (lineInputValue !== editedText) {
     // You hit the wrong key
+    el.lineInputElement.style.color = "red";
     cancelAudio.play();
+    return;
   }
+  el.lineInputElement.style.color = "black";
 }); //End
 
 el.typeTestList.addEventListener("click", (e) => {
