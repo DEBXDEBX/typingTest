@@ -61,9 +61,21 @@ i:hover {
   margin: 14px auto;
 }
 
-#lineOutput {
-  text-align: center;
+#outputDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
 }
+#lineOutput {
+  background-color: #151a32;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+}
+
+/* #lineOutput {
+  text-align: center;
+} */
 #lineInput {
   font-size: 44px;
 }
@@ -126,7 +138,7 @@ h3 {
 }
 .liLine {
   color: var(--secondary-color);
-  text-align: center;
+  /* text-align: center; */
 }
 .liLine {
   background-color: white;
