@@ -49,7 +49,7 @@ document.addEventListener("keyup", (e) => {
   if (el.lineInputElement.value === skipValue) {
     return;
   }
-  const lineInputValue = el.lineInputElement.value;
+  const lineInputValue = el.lineInputElement.value.trim();
   const key = e.key;
 
   // Click the enter key when finished with the line
