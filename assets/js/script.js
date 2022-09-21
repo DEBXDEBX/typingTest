@@ -166,22 +166,20 @@ el.lineList.addEventListener("click", (e) => {
       display.paintEditList(currentArray);
     }
   }
-  if (e.target.classList.contains("edit-note")) {
+  if (e.target.classList.contains("editNote")) {
     console.log("edit note clicked");
     // this kicks off the modal
     // get the index from the html
-    let index = e.target.parentElement.dataset.index;
+    let index = e.target.dataset.index;
+    console.log(index);
     index = parseInt(index);
     if (isNaN(index)) {
       return;
     }
-    nI = index;
-    // set modal text
-    // grab current note
-    const note =
-      fileCabArray[fcI].mainFolderArray[mfI].subFolderArray[sfI].noteArray[nI];
+    currentArrayIndex = index;
+    const myCurrentLine = currentArray[currentArrayIndex];
 
-    el.noteModalTextArea.value = note.text;
+    el.noteModalTextArea.value = myCurrentLine;
     clickAudio.play();
 
     return;
@@ -193,49 +191,28 @@ el.lineList.addEventListener("click", (e) => {
 // *************************************************************
 // when you click on the save edit btn in the modal
 el.saveEditedNoteBtn.addEventListener("click", (e) => {
-  // if (fcI < 0 || isNaN(fcI)) {
-  //   warningNameTakenAudio.play();
-  //   return;
-  // }
-
-  // get index
-  // update text
-  // save
-  // and render
-
-  // get the index from the html
-  let index = e.target.parentElement.dataset.index;
-  index = parseInt(index);
-  if (isNaN(index)) {
+  if (isNaN(currentArrayIndex)) {
     return;
   }
-  console.warn("index");
 
-  const newNoteText = el.noteModalTextArea.value.trim();
-  arrayOfTypeTests[testIndex].arrayOfStrings[index] = newNoteText;
-  // check if text is empty
-  if (!newNoteText) {
-    warningEmptyAudio.play();
+  const newText = el.noteModalTextArea.value.trim();
+
+  if (!newText) {
+    wrongAudio.play();
     display.showAlert("Please enter text in the text area!", "error");
     return;
   }
-  // grab current note
-  // const note = currentArray[currentArrayIndex];
 
-  // // if note is valid set the new text
-  // if (note) {
-  //   currentArray[currentArrayIndex] = newNoteText;
-  // }
-  display.showAlert("Note updated!", "success", 3000);
+  if (newText) {
+    currentArray[currentArrayIndex] = newText;
+  }
+  display.showAlert("Line updated!", "success", 3000);
   // addAudio.play();
-
-  saveAllTests();
 
   currentArray = arrayOfTypeTests[testIndex].arrayOfStrings;
   display.paintEditList(currentArray);
-  // write to file
-  // saveFileCabinet(fileCabArray[fcI]);
-  // renderNotes();
+  currentArrayIndex = 0;
+  saveAllTests();
 });
 
 // when you click on the cancel Btn on the edit note form
