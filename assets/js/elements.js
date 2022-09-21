@@ -31,5 +31,9 @@ class Elements {
     // Text Inputs
     this.textTypeTest = document.querySelector("#textTypeTest");
     this.textNewLine = document.querySelector("#textNewLine");
+    // modal
+    this.saveEditedNoteBtn = document.querySelector("#saveEditedNoteBtn");
+    this.editNoteCloseBtn = document.querySelector("#editNoteCloseBtn");
+    this.noteModalTextArea = document.querySelector("#noteModalTextArea");
   }
 }

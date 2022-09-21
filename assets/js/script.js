@@ -166,7 +166,85 @@ el.lineList.addEventListener("click", (e) => {
       display.paintEditList(currentArray);
     }
   }
+  if (e.target.classList.contains("edit-note")) {
+    console.log("edit note clicked");
+    // this kicks off the modal
+    // get the index from the html
+    let index = e.target.parentElement.dataset.index;
+    index = parseInt(index);
+    if (isNaN(index)) {
+      return;
+    }
+    nI = index;
+    // set modal text
+    // grab current note
+    const note =
+      fileCabArray[fcI].mainFolderArray[mfI].subFolderArray[sfI].noteArray[nI];
+
+    el.noteModalTextArea.value = note.text;
+    clickAudio.play();
+
+    return;
+  }
 }); //End
+
+// *************************************************************
+//  Edit Note Code
+// *************************************************************
+// when you click on the save edit btn in the modal
+el.saveEditedNoteBtn.addEventListener("click", (e) => {
+  // if (fcI < 0 || isNaN(fcI)) {
+  //   warningNameTakenAudio.play();
+  //   return;
+  // }
+
+  // get index
+  // update text
+  // save
+  // and render
+
+  // get the index from the html
+  let index = e.target.parentElement.dataset.index;
+  index = parseInt(index);
+  if (isNaN(index)) {
+    return;
+  }
+  console.warn("index");
+
+  const newNoteText = el.noteModalTextArea.value.trim();
+  arrayOfTypeTests[testIndex].arrayOfStrings[index] = newNoteText;
+  // check if text is empty
+  if (!newNoteText) {
+    warningEmptyAudio.play();
+    display.showAlert("Please enter text in the text area!", "error");
+    return;
+  }
+  // grab current note
+  // const note = currentArray[currentArrayIndex];
+
+  // // if note is valid set the new text
+  // if (note) {
+  //   currentArray[currentArrayIndex] = newNoteText;
+  // }
+  display.showAlert("Note updated!", "success", 3000);
+  // addAudio.play();
+
+  saveAllTests();
+
+  currentArray = arrayOfTypeTests[testIndex].arrayOfStrings;
+  display.paintEditList(currentArray);
+  // write to file
+  // saveFileCabinet(fileCabArray[fcI]);
+  // renderNotes();
+});
+
+// when you click on the cancel Btn on the edit note form
+el.editNoteCloseBtn.addEventListener("click", (e) => {
+  clickAudio.play();
+});
+// *************************************************************
+//  End Edit Note Code
+// *************************************************************
 
 // When you click on the add test icon +
 el.addShowFormTypeTest.addEventListener("click", (e) => {
