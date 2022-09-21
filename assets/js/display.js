@@ -78,7 +78,11 @@ class Display {
     let html = "";
 
     array.forEach((element, index) => {
-      html += `<li  class="liLine"><span title='Delete'><i class="fas fa-trash-alt deleteLine" data-index="${index}"></i></span>${element}</li>`;
+      html += `<li class="liLine">
+      <span title='Delete'>
+      <i class="fas fa-trash-alt deleteLine" data-index="${index}"></i>
+      </span>
+      ${element}</li>`;
     });
     this.elements.lineList.innerHTML = html;
 
