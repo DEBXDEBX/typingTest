@@ -207,7 +207,7 @@ el.saveEditedNoteBtn.addEventListener("click", (e) => {
     currentArray[currentArrayIndex] = newText;
   }
   display.showAlert("Line updated!", "success", 3000);
-  // addAudio.play();
+  correctAudio.play();
 
   currentArray = arrayOfTypeTests[testIndex].arrayOfStrings;
   display.paintEditList(currentArray);
@@ -217,7 +217,7 @@ el.saveEditedNoteBtn.addEventListener("click", (e) => {
 
 // when you click on the cancel Btn on the edit note form
 el.editNoteCloseBtn.addEventListener("click", (e) => {
-  clickAudio.play();
+  cancelAudio.play();
 });
 // *************************************************************
 //  End Edit Note Code
